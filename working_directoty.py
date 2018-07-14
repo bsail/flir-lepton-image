@@ -36,12 +36,7 @@ for x in range (60,63):
         telemetry.append(data[x*164 + 4 + y])
         a+=1
 print(telemetry)
-#trev=0
-trev=telemetry[48]+(telemetry[49]<<8)
-#print(trev)
-tcount=telemetry[26]+(telemetry[27]<<8)+(telemetry[28]<<16)+(telemetry[29]<<24)
-#print(tcount)
-#print((telemetry[26*2+1]+(telemetry[26*2]<<8))/100)
+
 def valueator(start,end,group,tele):
     if (group=="A"):
         par = 0
@@ -49,13 +44,11 @@ def valueator(start,end,group,tele):
         val = []
         for j in range(0,rra):
             val.append(tele[2*(start+j)]*256 + tele[2*(start+j)+1])
-
         print(val)
         for (j,item) in enumerate(val):
             par = (par*256*256) + val[j]
         return val[0]
     elif (group=="B"):
-        #print("B!!")
         par = 0
         rra=(end-start+1)
         val = []
@@ -65,11 +58,19 @@ def valueator(start,end,group,tele):
         print(val)
         for (j,item) in enumerate(val):
             par = (par*256*256) + val[j]
+        return val[0]    
+    elif (group=="C"):
+        par = 0
+        rra=(end-start+1)
+        val = []
+        for j in range(0,rra):
+            val.append(tele[2*(start+158+j)]*256 + tele[2*(start+158+j)+1])
+
+        print(val)
+        for (j,item) in enumerate(val):
+            par = (par*256*256) + val[j]    
         return val[0]
 import json
-#from pprint import pprint
-
-#json_file='a.json' 
 json_input='telemetry_lepton.json'
 json_output='telemetry_output_lepton.json'
 
@@ -102,16 +103,30 @@ tele_types=["Tel_rev",
             "Window_Trans",
             "Window_Ref",
             "Window_Temp",
-            "Window_Ref_Temp"]
-#print(template["Lepton"][tele_types[3]]["value"])
-#print(template["Lepton"]["Tel_rev"]["start"])
-#print(template["Lepton"]["Tel_rev"]["end"])
-#print(template["Lepton"]["Time_count"]["end"])
-#print(template["Lepton"]["Soft_rev"]["end"]+template["Lepton"]["Time_count"]["end"])
+            "Window_Ref_Temp",
+            "Gain_mode",
+            "Eff_Gain",
+            "Gain_mode_des",
+            "Temp_Gain_mode_H_L",
+            "Temp_Gain_mode_L_H",
+            "Temp_Gain_mode_H_L_K",
+            "Temp_Gain_mode_L_H_K",
+            "Pop_Gain_mode_H_L",
+            "Pop_Gain_mode_L_H",
+            "Gain_mode_ROI",
+            "TLin_state",
+            "TLin_Res",
+            "Spot_Mean",
+            "Spot_Max",
+            "Spot_Min",
+            "Spot_Pop",
+            "Spot_Start_row",
+            "Spot_Start_Col",
+            "Spot_End_Row",
+            "Spot_End_Col"
+            ]
 for j in range (0,len(tele_types)):
      template["Lepton"][tele_types[j]]["value"]=valueator(template["Lepton"][tele_types[j]]["start"],template["Lepton"][tele_types[j]]["end"],template["Lepton"][tele_types[j]]["group"],telemetry)
-     #print(j)
-#template["Lepton"][tele_types[0]]["value"]=valueator(template["Lepton"][tele_types[0]]["start"],template["Lepton"][tele_types[0]]["end"],telemetry)
 json_final=open(json_output,"w")
 json.dump(template,json_final)
 json_final.close()
