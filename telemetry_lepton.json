@@ -1,0 +1,435 @@
+{"Lepton":{
+	"Tel_rev":
+	{
+		"name":"Telemetry revision",
+		"start":0,
+		"end":0,
+		"value":0,
+		"group":"A",
+		"desc":"Format = major(byte 1), minor rev(byte 0)"
+	},
+	"Time_count":
+	{
+	"name":"Time Counter",
+	"start":1,
+	"end":2,
+	"value":0,
+	"group":"A",
+	"desc":"32 bit counter in units of msrc elapsed since boot-up"
+	},
+	"Status_bits":
+	{
+	"name":"Status Bits",
+	"start":3,
+	"end":4,
+	"value":0,
+	"group":"A",
+	"desc":"Table 6(datasheet)",
+	"Status":{
+		"FFC Desired":{"bit":0,"start":3,"end":3},
+		"FFC State":{"bit":0,"start":4,"end":5},
+		"AGC State":{"bit":0,"start":12,"end":12},
+		"Shutter lockout":{"bit":0,"start":15,"end":15},
+		"Overtemp shut down":{"bit":0,"start":20,"end":20}
+	}
+	},
+	"Module_num":
+	{
+	"name":"Module serial#",
+	"start":5,
+	"end":12,
+	"value":0,
+	"group":"A",
+	"desc":"-"
+	},
+	"Soft_rev":
+	{
+	"name":"Software revision",
+	"start":13,
+	"end":16,
+	"value":0,
+	"group":"A",
+	"desc":"-"
+	},
+	"Frame_count":
+	{
+	"name":"Frame counter",
+	"start":20,
+	"end":21,
+	"value":0,
+	"group":"A",
+	"desc":"32-bit counter of output frames"
+	},
+	"Frame_mean":
+	{
+	"name":"Frame Mean",
+	"start":22,
+	"end":22,
+	"value":0,
+	"group":"A",
+	"desc":"-"
+	},
+	"FPA_Temp":
+	{
+	"name":"FPA Temp",
+	"start":23,
+	"end":23,
+	"value":0,
+	"group":"A",
+	"desc":"In counts(prior to conversion to Kelvin)"
+	},
+	"FPA_Temp_2":
+	{
+	"name":"FPA Temp",
+	"start":24,
+	"end":24,
+	"value":0,
+	"group":"A",
+	"desc":"In Kelvin x 100"
+	},
+	"House_Temp":
+	{
+	"name":"Housing Temp",
+	"start":25,
+	"end":25,
+	"value":0,
+	"group":"A",
+	"desc":"In counts(prior to conversion to Kelvin)"
+	},
+	"House_Temp_2":
+	{
+	"name":"Housing Temp",
+	"start":26,
+	"end":26,
+	"value":0,
+	"group":"A",
+	"desc":"In Kelvin x 100"
+	},
+	"FPA_Temp_at_last":
+	{
+	"name":"FPA Temp at last FFC",
+	"start":29,
+	"end":29,
+	"value":0,
+	"group":"A",
+	"desc":"Updated every FFC. Units are Kelvin x 100"
+	},
+	"Time_count_at_last":
+	{
+	"name":"Time counter at last FFC",
+	"start":30,
+	"end":31,
+	"value":0,
+	"group":"A",
+	"desc":"Updated every FFC. Units are msec"
+	},
+	"House_Temp_at_last":
+	{
+	"name":"Housing Temp at last FFC",
+	"start":32,
+	"end":32,
+	"value":0,
+	"group":"A",
+	"desc":"Updated every FFC. Units are Kelvin x 100"
+	},
+	"AGC_ROI":
+	{
+	"name":"AGC ROI",
+	"start":34,
+	"end":37,
+	"value":0,
+	"group":"A",
+	"desc":"(top,left,bottom,right)"
+	},
+	"AGC_Clip_high":
+	{
+	"name":"AGC Clip-Limit High",
+	"start":38,
+	"end":38,
+	"value":0,
+	"group":"A",
+	"desc":"Datasheet: AGC, page 19"
+	},
+	"AGC_Clip_low":
+	{
+	"name":"AGC Clip-Limit Low",
+	"start":39,
+	"end":39,
+	"value":0,
+	"group":"A",
+	"desc":"Datasheet: AGC, page 19"
+	},
+	"Video_output":
+	{
+	"name":"Video Output Format",
+	"start":72,
+	"end":73,
+	"value":0,
+	"group":"A",
+	"desc":"Video Output Format modes, datsheet, page 40"
+	},
+	"Log2_of_FFC":
+	{
+	"name":"Log2 of FFC frames",
+	"start":74,
+	"end":74,
+	"value":0,
+	"group":"A",
+	"desc":"See FFC States, page 22"
+	},
+	"Emessivity":
+	{
+	"name":"Emessivity",
+	"start":19,
+	"end":19,
+	"value":0,
+	"group":"B",
+	"desc":"Scaled by 8192"
+	},
+	"Back_Temp":
+	{
+	"name":"Background Temperature",
+	"start":20,
+	"end":20,
+	"value":0,
+	"group":"B",
+	"desc":"Temperature n Kelvin x 100"
+	},
+	"Atmo_Trans":
+	{
+	"name":"Atmospheric Transmission",
+	"start":21,
+	"end":21,
+	"value":0,
+	"group":"B",
+	"desc":"Scaled by 8192"
+	},
+	"Atmo_Temp":
+	{
+	"name":"Atmospheric Temperature",
+	"start":22,
+	"end":22,
+	"value":0,
+	"group":"B",
+	"desc":"Temperature n Kelvin x 100"
+	},
+	"Window_Trans":
+	{
+	"name":"Window Transmission",
+	"start":23,
+	"end":23,
+	"value":0,
+	"group":"B",
+	"desc":"Scaled by 8192"
+	},
+	"Window_Ref":
+	{
+	"name":"Window Reflection",
+	"start":24,
+	"end":24,
+	"value":0,
+	"group":"B",
+	"desc":"Scaled by 8192"
+	},
+	"Window_Temp":
+	{
+	"name":"Window Temperature",
+	"start":25,
+	"end":25,
+	"value":0,
+	"group":"B",
+	"desc":"Temperature n Kelvin x 100"
+	},
+	"Window_Ref_Temp":
+	{
+	"name":"Window Reflected_Temperature",
+	"start":26,
+	"end":26,
+	"value":0,
+	"group":"B",
+	"desc":"Temperature n Kelvin x 100"
+	},
+	"Gain_mode":
+	{
+	"name":"Gain Mode",
+	"start":5,
+	"end":5,
+	"value":0,
+	"group":"C",
+	"desc":"0=High,1=Low,2=Auto"
+	},
+	"Eff_Gain":
+	{
+	"name":"Effective Gain",
+	"start":6,
+	"end":6,
+	"value":0,
+	"group":"C",
+	"desc":"In Auto mode, 0=High,1=Low"
+	},
+	"Gain_mode_des":
+	{
+	"name":"Gain Mode Desired Flag",
+	"start":7,
+	"end":7,
+	"value":0,
+	"group":"C",
+	"desc":"0=current gain mode is desired,1=gain mode switch desired"
+	},
+	"Temp_Gain_mode_H_L":
+	{
+	"name":"Temperature Gain Mode Threshold High to Low(degC)",
+	"start":8,
+	"end":8,
+	"value":0,
+	"group":"C",
+	"desc":"Temperature threshold in degC used to determine when an Auto switch to Low gain mode (while in High gain mode) should occur in Radiometry enabled/TLinear disabled mode"
+	},
+	"Temp_Gain_mode_L_H":
+	{
+	"name":"Temperature Gain Mode Threshold Low to High(degC)",
+	"start":9,
+	"end":9,
+	"value":0,
+	"group":"C",
+	"desc":"Temperature threshold in degC used to determine when an Auto switch to High gain mode (while in Low gain mode) should occur in Radiometry enabled/TLinear disabled mode"
+	},
+	"Temp_Gain_mode_H_L_K":
+	{
+	"name":"Temperature Gain Mode Threshold High to Low(K)",
+	"start":10,
+	"end":10,
+	"value":0,
+	"group":"C",
+	"desc":"Temperature threshold in Kelvin used to determine when an Auto switch to Low gain mode (while in High gain mode) should occur in Radiometry enabled/TLinear disabled mode"
+	},
+	"Temp_Gain_mode_L_H_K":
+	{
+	"name":"Temperature Gain Mode Threshold Low to High(K)",
+	"start":11,
+	"end":11,
+	"value":0,
+	"group":"C",
+	"desc":"Temperature threshold in Kelvin used to determine when an Auto switch to High gain mode (while in Low gain mode) should occur in Radiometry enabled/TLinear disabled mode"
+	},
+	"Pop_Gain_mode_H_L":
+	{
+	"name":"Population Gain Mode Threshold High to Low",
+	"start":14,
+	"end":14,
+	"value":0,
+	"group":"C",
+	"desc":"Population threshold in percent of the Gain Mode ROI when an Auto switch to Low gain mode(while in High gain mode) should occur"
+	},
+	"Pop_Gain_mode_L_H":
+	{
+	"name":"Population Gain Mode Threshold Low to High",
+	"start":15,
+	"end":15,
+	"value":0,
+	"group":"C",
+	"desc":"Population threshold in percent of the Gain Mode ROI when an Auto switch to High gain mode(while in Low gain mode) should occur"
+	},
+	"Gain_mode_ROI":
+	{
+	"name":"Gain Mode ROI",
+	"start":22,
+	"end":25,
+	"value":0,
+	"group":"C",
+	"desc":"(startRow,startCol,endRow,endCol"
+	},
+	"TLin_state":
+	{
+	"name":"TLinear Enable State",
+	"start":48,
+	"end":48,
+	"value":0,
+	"group":"C",
+	"desc":"True if enabled"
+	},
+	"TLin_Res":
+	{
+	"name":"TLinear Resolution",
+	"start":49,
+	"end":49,
+	"value":0,
+	"group":"C",
+	"desc":"T-Linear resolution (0=0.1, 1=0.01)"
+	},
+	"Spot_Mean":
+	{
+	"name":"Spotmeter Mean",
+	"start":50,
+	"end":50,
+	"value":0,
+	"group":"C",
+	"desc":"Spotmeter mean value in Kelvin within ROI"
+	},
+	"Spot_Max":
+	{
+	"name":"Spotmeter Maximum",
+	"start":51,
+	"end":51,
+	"value":0,
+	"group":"C",
+	"desc":"Spotmeter max value in Kelvin within ROI"
+	},
+	"Spot_Min":
+	{
+	"name":"Spotmeter Minimum",
+	"start":52,
+	"end":52,
+	"value":0,
+	"group":"C",
+	"desc":"Spotmeter min value in Kelvin within ROI"
+	},
+	"Spot_Pop":
+	{
+	"name":"Spotmeter Population",
+	"start":53,
+	"end":53,
+	"value":0,
+	"group":"C",
+	"desc":"Number of pixel in spotmeter ROI"
+	},
+	"Spot_Start_row":
+	{
+	"name":"Spotmeter ROI Start Row",
+	"start":54,
+	"end":54,
+	"value":0,
+	"group":"C",
+	"desc":"Spotmeter ROI starting row coordinate"
+	},
+	"Spot_Start_Col":
+	{
+	"name":"Spotmeter ROI Start Col",
+	"start":55,
+	"end":55,
+	"value":0,
+	"group":"C",
+	"desc":"Spotmeter ROI starting column coordinate"
+	},
+	"Spot_End_Row":
+	{
+	"name":"Spotmeter ROI End Row",
+	"start":56,
+	"end":56,
+	"value":0,
+	"group":"C",
+	"desc":"Spotmeter ROI ending row coordinate"
+	},
+	"Spot_End_Col":
+	{
+	"name":"Spotmeter ROI End Col",
+	"start":57,
+	"end":57,
+	"value":0,
+	"group":"C",
+	"desc":"Spotmeter ROI ending column coordinate"
+	}
+
+
+}
+}
