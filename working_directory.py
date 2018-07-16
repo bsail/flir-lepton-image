@@ -13,7 +13,12 @@ Created on Tue Jul 10 15:50:31 2018
 
 @author: dmitry
 """
-data=(open('new.ir','rb').read())
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("filename", help="Name of the input file and output files without extension", type=str)
+args = parser.parse_args()
+
+data=(open(args.filename +".ir",'rb').read())
 image = []
 telemetry=[]
 for x in range (0,59):
@@ -29,12 +34,11 @@ for j in range (0,59):
         im.putpixel((i,j),(image[k],image[k],image[k]))
         k+=1
 #im.show()
-im.save("1.bmp")
-a=0
+im.save(args.filename + ".bmp")
 for x in range (60,63):
     for y in range (0,179):
         telemetry.append(data[x*164 + 4 + y])
-        a+=1
+
 print(telemetry)
 
 def valueator(start,end,group,tele):
@@ -44,7 +48,7 @@ def valueator(start,end,group,tele):
         val = []
         for j in range(0,rra):
             val.append(tele[2*(start+j)]*256 + tele[2*(start+j)+1])
-#        print(val)
+
         for (j,item) in enumerate(val):
             par = (par*256*256) + val[j]
         return val[0]
@@ -55,7 +59,6 @@ def valueator(start,end,group,tele):
         for j in range(0,rra):
             val.append(tele[2*(start+79+j)]*256 + tele[2*(start+79+j)+1])
 
-#        print(val)
         for (j,item) in enumerate(val):
             par = (par*256*256) + val[j]
         return val[0]    
@@ -66,14 +69,13 @@ def valueator(start,end,group,tele):
         for j in range(0,rra):
             val.append(tele[2*(start+158+j)]*256 + tele[2*(start+158+j)+1])
 
-#        print(val)
         for (j,item) in enumerate(val):
             par = (par*256*256) + val[j]    
         return val[0]
 
 import json
 json_input='telemetry_lepton.json'
-json_output='telemetry_output_lepton.json'
+json_output=args.filename +'_telemetry_output_lepton.json'
 
 json_data=open(json_input)
 template = json.load(json_data)
@@ -145,12 +147,6 @@ def stat_bit(temp,start,end,pos):
 for i in range (0,5):
    print(stat_bit(stat,template["Lepton"]["Status_bits"]["Status"][stat_typez[i]]["start"],template["Lepton"]["Status_bits"]["Status"][stat_typez[i]]["end"],i))
    template["Lepton"]["Status_bits"]["Status"][stat_typez[i]]["bit"]=stat_bit(stat,template["Lepton"]["Status_bits"]["Status"][stat_typez[i]]["start"],template["Lepton"]["Status_bits"]["Status"][stat_typez[i]]["end"],i)
-#print("_________________________________")
-#print((6192&(1<<3))>>3)
-#print(((6192&(1<<4))>>4)|((6192&(1<<5))>>5)<<1)
-#print((6192&(1<<12))>>12)#+((6192&(1<<5))>>5))
-#print((6192&(1<<15))>>15)
-#print((6192&(1<<20))>>20)
 json_final=open(json_output,"w")
 json.dump(template,json_final)
 json_final.close()
